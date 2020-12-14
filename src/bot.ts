@@ -2,8 +2,6 @@ import { Client } from 'discord.js';
 
 import readyListener from './listeners/readyListener';
 
-import config from './config';
-
 export class GiyoBot {
     // Discord client of the bot
     private _client: Client;
@@ -25,7 +23,7 @@ export class GiyoBot {
         // init event listeners
         this.initEvents();
 
-        this._client.login(config.botToken);
+        this._client.login(process.env.GIYOBOT_TOKEN);
     }
 
     // init event listeners
