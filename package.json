@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "cd ./src && nodemon ./app.ts",
     "build": "tsc -p .",
     "start": "node ./app.js"
   },
   "author": "GiyoMoon",
   "license": "ISC",
   "dependencies": {
+    "dayjs": "^1.9.7",
     "discord.js": "^12.5.1"
   },
   "devDependencies": {
