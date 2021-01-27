@@ -3,7 +3,8 @@ import { Client } from 'discord.js';
 
 import messageListener from './listeners/messageListener';
 import readyListener from './listeners/readyListener';
-import { existsSync, fstat, readdirSync } from 'fs';
+import { existsSync, readdirSync } from 'fs';
+import { BotDatabase } from './database/database';
 
 export class GiyoBot {
     // Discord client of the bot
@@ -12,6 +13,8 @@ export class GiyoBot {
     // listeners
     private _messageListener: messageListener;
     private _readyListener: readyListener;
+
+    private _database: BotDatabase;
 
     private _modules: Module[];
 
@@ -30,6 +33,9 @@ export class GiyoBot {
 
         this._messageListener = new messageListener(this);
         this._readyListener = new readyListener(this);
+
+        this._database = new BotDatabase();
+        await this._database.initConnection();
 
         // init event listeners
         this._initEvents();
@@ -62,5 +68,9 @@ export class GiyoBot {
             const instance = new instanceClass(this);
             this._modules.push({ id: instance.info.id, name: instance.info.name, enabled: true, instance });
         });
+    }
+
+    public getDatabase() {
+        return this._database;
     }
 }
