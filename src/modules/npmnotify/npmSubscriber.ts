@@ -34,8 +34,6 @@ export default class npmSubscriber {
                     console.error(`Channel ${npmPackage.channelId} not found...`);
                 }
                 await this._npmPackageRepository.save({ id: npmPackage.id, name: npmPackage.name, channelId: npmPackage.channelId, latest: newnpmPackage.latest });
-            } else {
-                console.log(`Version of ${npmPackage.name} is still at ${npmPackage.latest}`);
             }
         }
     }

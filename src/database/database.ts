@@ -7,7 +7,7 @@ const options: ConnectionOptions = {
     type: 'sqlite',
     database: `./sqlite/GiyoBot.db`,
     entities: [npmPackage],
-    logging: true
+    logging: false
 }
 
 export class BotDatabase {
